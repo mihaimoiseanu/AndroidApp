@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion app.compileSdk
+    buildToolsVersion app.buildTools
+
+    defaultConfig {
+        applicationId app.id
+        minSdkVersion app.minSdk
+        targetSdkVersion app.targetSdk
+        versionCode app.versionCode
+        versionName app.versionName
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":api")
+    implementation project(":commons")
+
+    implementation libraries.appCompatV7
+    implementation libraries.design
+    implementation libraries.constraintLayout
+    implementation libraries.recyclerView
+
+    implementation libraries.dagger
+    annotationProcessor libraries.daggerCompiler
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.gson
+    implementation libraries.glide
+
+
+}

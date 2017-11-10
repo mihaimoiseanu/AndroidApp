@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion app.compileSdk
+    buildToolsVersion app.buildTools
+
+    defaultConfig {
+        minSdkVersion app.minSdk
+        targetSdkVersion app.targetSdk
+        versionCode app.versionCode
+        versionName app.versionName
+    }
+}
+
+dependencies {
+    implementation project(":commons")
+    api libraries.retrofit
+    api libraries.retrofitGsonConverter
+    api libraries.okhttp
+    implementation libraries.okhttpLogger
+    implementation libraries.supportAnnotations
+    implementation libraries.rxJava
+    implementation libraries.rxAndroid
+    implementation libraries.retrofitRxAdapter
+}
