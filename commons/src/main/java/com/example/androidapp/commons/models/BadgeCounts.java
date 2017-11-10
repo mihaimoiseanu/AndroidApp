@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class BadgeCounts {
 
+    private int id;
+
     @SerializedName("bronze")
     @Expose
     private long bronze;
@@ -51,6 +53,15 @@ public class BadgeCounts {
 
     public BadgeCounts withGold(long gold) {
         this.gold = gold;
+        return this;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public BadgeCounts setId(int id) {
+        this.id = id;
         return this;
     }
 }

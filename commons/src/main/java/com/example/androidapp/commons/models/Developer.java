@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class Developer {
 
+    private int id;
+
     @SerializedName("badge_counts")
     @Expose
     private BadgeCounts badgeCounts;
@@ -68,6 +70,15 @@ public class Developer {
     @SerializedName("display_name")
     @Expose
     private String displayName;
+
+    public int getId() {
+        return id;
+    }
+
+    public Developer setId(int id) {
+        this.id = id;
+        return this;
+    }
 
     public BadgeCounts getBadgeCounts() {
         return badgeCounts;
