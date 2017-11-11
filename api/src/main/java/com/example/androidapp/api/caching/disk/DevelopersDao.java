@@ -1,12 +1,11 @@
 package com.example.androidapp.api.caching.disk;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
 import com.example.androidapp.commons.models.DeveloperEntity;
-
-import java.util.List;
 
 import io.reactivex.Single;
 
@@ -14,12 +13,13 @@ import io.reactivex.Single;
 public interface DevelopersDao {
 
     @Insert
-    void insertDevs(List<DeveloperEntity> developerEntities);
+    void insertDevs(DeveloperEntity devs);
 
-    @Insert
-    void insertDev(DeveloperEntity developer);
+    @Delete
+    void deleteDevs(DeveloperEntity devs);
 
     @Query("SELECT * FROM DeveloperEntity")
-    Single<List<DeveloperEntity>> fetchDevelopers();
+    Single<DeveloperEntity> fetchDevelopers();
+
 
 }

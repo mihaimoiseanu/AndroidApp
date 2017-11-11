@@ -9,6 +9,8 @@ import com.example.androidapp.api.caching.memory.ExpiringLruCache;
 import com.example.androidapp.api.retrofit.StackOverflowApiProvider;
 import com.example.androidapp.commons.models.Developer;
 
+import java.util.List;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -36,14 +38,14 @@ public class RepositoryModule {
     @Provides
     @Singleton
     ExpiringLruCache provideExpiringCache() {
-        return new ExpiringLruCache<Integer, Developer>(15, 1000 * 60 * 10);
+        return new ExpiringLruCache<String, List<Developer>>(15, 1000 * 60 * 10);
     }
 
     @Provides
     @Singleton
     DevRepository provideDevRepository(StackOverflowApiProvider stackOverflowApiProvider,
                                        DevDatabase devDatabase,
-                                       ExpiringLruCache<Integer, Developer> expiringLruCache) {
+                                       ExpiringLruCache<String, List<Developer>> expiringLruCache) {
         return new DevRepository(expiringLruCache, devDatabase, stackOverflowApiProvider);
     }
 
