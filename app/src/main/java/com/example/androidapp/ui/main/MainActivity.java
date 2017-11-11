@@ -63,7 +63,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showDev(Developer item) {
-
+        if (mTwoPane) {
+            Bundle arguments = new Bundle();
+            arguments.putParcelable(ItemDetailFragment.ARG_ITEM_ID, item);
+            ItemDetailFragment fragment = new ItemDetailFragment();
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.item_detail_container, fragment)
+                    .commit();
+        } else {
+            startActivity(ItemDetailActivity.makeIntent(this, item));
+        }
     }
 
     private void injectMembers() {

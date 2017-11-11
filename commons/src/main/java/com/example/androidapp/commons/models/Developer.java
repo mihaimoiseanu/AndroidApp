@@ -1,9 +1,12 @@
 package com.example.androidapp.commons.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Developer {
+public class Developer implements Parcelable {
 
     @SerializedName("badge_counts")
     @Expose
@@ -68,6 +71,72 @@ public class Developer {
     @SerializedName("display_name")
     @Expose
     private String displayName;
+
+    protected Developer(Parcel in) {
+        badgeCounts = in.readParcelable(BadgeCounts.class.getClassLoader());
+        accountId = in.readLong();
+        isEmployee = in.readByte() != 0;
+        lastModifiedDate = in.readLong();
+        lastAccessDate = in.readLong();
+        age = in.readLong();
+        reputationChangeYear = in.readLong();
+        reputationChangeQuarter = in.readLong();
+        reputationChangeMonth = in.readLong();
+        reputationChangeWeek = in.readLong();
+        reputationChangeDay = in.readLong();
+        reputation = in.readLong();
+        creationDate = in.readLong();
+        userType = in.readString();
+        userId = in.readLong();
+        acceptRate = in.readLong();
+        location = in.readString();
+        websiteUrl = in.readString();
+        link = in.readString();
+        profileImage = in.readString();
+        displayName = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(badgeCounts, 0);
+        dest.writeLong(accountId);
+        dest.writeByte((byte) (isEmployee ? 1 : 0));
+        dest.writeLong(lastModifiedDate);
+        dest.writeLong(lastAccessDate);
+        dest.writeLong(age);
+        dest.writeLong(reputationChangeYear);
+        dest.writeLong(reputationChangeQuarter);
+        dest.writeLong(reputationChangeMonth);
+        dest.writeLong(reputationChangeWeek);
+        dest.writeLong(reputationChangeDay);
+        dest.writeLong(reputation);
+        dest.writeLong(creationDate);
+        dest.writeString(userType);
+        dest.writeLong(userId);
+        dest.writeLong(acceptRate);
+        dest.writeString(location);
+        dest.writeString(websiteUrl);
+        dest.writeString(link);
+        dest.writeString(profileImage);
+        dest.writeString(displayName);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Developer> CREATOR = new Creator<Developer>() {
+        @Override
+        public Developer createFromParcel(Parcel in) {
+            return new Developer(in);
+        }
+
+        @Override
+        public Developer[] newArray(int size) {
+            return new Developer[size];
+        }
+    };
 
     public BadgeCounts getBadgeCounts() {
         return badgeCounts;

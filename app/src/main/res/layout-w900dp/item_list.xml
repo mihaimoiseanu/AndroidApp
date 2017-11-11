@@ -15,6 +15,7 @@
         android:divider="?android:attr/dividerHorizontal"
         android:orientation="horizontal"
         android:showDividers="middle"
+        android:weightSum="5"
         tools:context="com.example.androidapp.ui.main.MainActivity">
 
         <!--
@@ -32,6 +33,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layoutManager="LinearLayoutManager"
+            android:layout_weight="1.5"
             tools:context="com.example.androidapp.ui.main.MainActivity"
             tools:listitem="@layout/item_dev" />
 
@@ -39,7 +41,7 @@
             android:id="@+id/item_detail_container"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3" />
+            android:layout_weight="3.5" />
 
     </LinearLayout>
 </layout>
