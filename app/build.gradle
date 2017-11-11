@@ -47,9 +47,4 @@ dependencies {
     implementation libraries.rxAndroid
     implementation libraries.gson
     implementation libraries.glide
-
-    implementation libraries.room
-    implementation libraries.roomAnnotations
-    implementation libraries.roomRx
-
 }

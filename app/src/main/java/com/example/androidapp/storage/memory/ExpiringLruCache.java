@@ -1,4 +1,4 @@
-package com.example.androidapp.api.caching.memory;
+package com.example.androidapp.storage.memory;
 
 import android.os.SystemClock;
 import android.util.LruCache;

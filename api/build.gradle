@@ -23,8 +23,4 @@ dependencies {
     implementation libraries.rxJava
     implementation libraries.rxAndroid
     implementation libraries.retrofitRxAdapter
-
-    implementation libraries.room
-    implementation libraries.roomAnnotations
-    implementation libraries.roomRx
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.androidapp.di.modules.AppModule;
 import com.example.androidapp.di.modules.RepositoryModule;
+import com.example.androidapp.storage.DevRepository;
 
 import javax.inject.Singleton;
 
@@ -15,5 +16,6 @@ public interface AppComponent {
 
     Context getContext();
 
+    DevRepository getDevRepo();
 
 }

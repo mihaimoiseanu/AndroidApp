@@ -13,13 +13,6 @@ android {
 }
 
 dependencies {
-
     implementation libraries.gson
     implementation libraries.supportAnnotations
-
-    //rx
-    implementation libraries.rxJava
-    implementation libraries.rxAndroid
-    implementation libraries.room
-    implementation libraries.roomAnnotations
 }
