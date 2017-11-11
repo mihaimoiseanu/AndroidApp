@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setSupportActionBar(binding.toolbar);
         binding.toolbar.setTitle(getTitle());
         recyclerAdapter = new DevRecyclerAdapter(presenter);
-        binding.itemList.itemList.setAdapter(recyclerAdapter);
-        if (binding.itemList.itemDetailContainer != null) {
+        binding.listItem.itemList.setAdapter(recyclerAdapter);
+        if (binding.listItem.itemDetailContainer != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
