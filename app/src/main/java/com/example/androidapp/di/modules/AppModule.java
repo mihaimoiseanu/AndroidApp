@@ -4,18 +4,12 @@ package com.example.androidapp.di.modules;
 import android.app.Application;
 import android.content.Context;
 
-import com.example.androidapp.di.components.MainComponent;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 
-@Module(
-        subcomponents = {
-                MainComponent.class
-        }
-)
+@Module
 public class AppModule {
 
     @Provides
