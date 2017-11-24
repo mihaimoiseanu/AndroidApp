@@ -1,21 +1,25 @@
-package com.example.androidapp.storage;
+package com.example.androidapp.api.storage;
 
 import android.os.SystemClock;
 
 import com.example.androidapp.api.retrofit.StackOverflowApiProvider;
+import com.example.androidapp.api.storage.disk.SharedPrefsHelper;
+import com.example.androidapp.api.storage.memory.ExpiringLruCache;
 import com.example.androidapp.commons.models.DevResponse;
 import com.example.androidapp.commons.models.Developer;
-import com.example.androidapp.storage.disk.SharedPrefsHelper;
-import com.example.androidapp.storage.memory.ExpiringLruCache;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+@Singleton
 public class DevRepository {
 
     private final static String MEMORY_KEY = ".key.devs";
@@ -25,6 +29,7 @@ public class DevRepository {
     private final StackOverflowApiProvider stackOverflowApiProvider;
     private final SharedPrefsHelper sharedPrefsHelper;
 
+    @Inject
     public DevRepository(ExpiringLruCache<String, List<Developer>> memory, SharedPrefsHelper sharedPrefsHelper, StackOverflowApiProvider stackOverflowApiProvider) {
         this.memory = memory;
         this.sharedPrefsHelper = sharedPrefsHelper;

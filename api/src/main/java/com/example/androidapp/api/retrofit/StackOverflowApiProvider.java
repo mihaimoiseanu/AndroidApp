@@ -1,17 +1,21 @@
 package com.example.androidapp.api.retrofit;
 
+import com.example.androidapp.api.BuildConfig;
 import com.example.androidapp.api.service.StackOverflowService;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class StackOverflowApiProvider extends AbstractApiProvider<StackOverflowService> {
 
-    private final static String GIT_HUB_ENDPOINT = "https://api.stackexchange.com/2.2/";
-
+    @Inject
     public StackOverflowApiProvider() {
         super(StackOverflowService.class);
     }
 
     @Override
     protected String getBaseEndpoint() {
-        return GIT_HUB_ENDPOINT;
+        return BuildConfig.BASE_ENDPOINT;
     }
 }

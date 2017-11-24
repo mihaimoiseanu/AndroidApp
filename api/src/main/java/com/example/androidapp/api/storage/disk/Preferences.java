@@ -1,4 +1,4 @@
-package com.example.androidapp.storage.disk;
+package com.example.androidapp.api.storage.disk;
 
 public interface Preferences {
 

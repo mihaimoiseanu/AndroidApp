@@ -1,7 +1,7 @@
 package com.example.androidapp.ui.main;
 
+import com.example.androidapp.api.storage.GetUsersCallback;
 import com.example.androidapp.commons.models.Developer;
-import com.example.androidapp.storage.GetUsersCallback;
 import com.example.androidapp.utils.ActionHandler;
 
 import java.util.List;

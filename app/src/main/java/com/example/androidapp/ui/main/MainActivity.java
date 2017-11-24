@@ -4,16 +4,15 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.androidapp.AndroidApplication;
 import com.example.androidapp.R;
 import com.example.androidapp.commons.models.Developer;
 import com.example.androidapp.databinding.MainBinding;
-import com.example.androidapp.di.components.DaggerMainComponent;
-import com.example.androidapp.di.modules.MainModule;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
 
 /**
  * An activity representing a list of Items. This activity
@@ -38,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        injectMembers();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_list);
         setSupportActionBar(binding.toolbar);
         binding.toolbar.setTitle(getTitle());
@@ -74,13 +73,5 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         } else {
             startActivity(ItemDetailActivity.makeIntent(this, item));
         }
-    }
-
-    private void injectMembers() {
-        DaggerMainComponent.builder()
-                .appComponent(AndroidApplication.getInstance().getAppComponent())
-                .mainModule(new MainModule(this))
-                .build()
-                .inject(this);
     }
 }

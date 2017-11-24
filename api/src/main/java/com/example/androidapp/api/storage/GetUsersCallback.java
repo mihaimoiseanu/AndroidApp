@@ -1,4 +1,4 @@
-package com.example.androidapp.storage;
+package com.example.androidapp.api.storage;
 
 import com.example.androidapp.commons.models.Developer;
 

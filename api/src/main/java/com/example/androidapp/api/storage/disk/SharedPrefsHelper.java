@@ -1,4 +1,4 @@
-package com.example.androidapp.storage.disk;
+package com.example.androidapp.api.storage.disk;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,13 +9,18 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
-import static com.example.androidapp.storage.disk.Preferences.PrefKeys.KEY_DEVS;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
+import static com.example.androidapp.api.storage.disk.Preferences.PrefKeys.KEY_DEVS;
+
+@Singleton
 public class SharedPrefsHelper {
 
     private SharedPreferences sharedPreferences;
     private Gson gson;
 
+    @Inject
     public SharedPrefsHelper(Context context) {
         this.sharedPreferences = context.getSharedPreferences(Preferences.PrefNames.PREFS_NAME_TAG, Context.MODE_PRIVATE);
         gson = new Gson();

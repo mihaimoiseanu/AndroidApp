@@ -1,6 +1,7 @@
 package com.example.androidapp.di.modules;
 
-import com.example.androidapp.storage.DevRepository;
+import com.example.androidapp.api.storage.DevRepository;
+import com.example.androidapp.ui.main.MainActivity;
 import com.example.androidapp.ui.main.MainContract;
 import com.example.androidapp.ui.main.MainPresenter;
 
@@ -10,14 +11,13 @@ import dagger.Provides;
 @Module
 public class MainModule {
 
-    private MainContract.View view;
-
-    public MainModule(MainContract.View view) {
-        this.view = view;
+    @Provides
+    MainContract.View provideMainView(MainActivity mainActivity) {
+        return mainActivity;
     }
 
     @Provides
-    MainPresenter providePresenter(DevRepository devRepository) {
+    MainPresenter providePresenter(MainContract.View view, DevRepository devRepository) {
         return new MainPresenter(view, devRepository);
     }
 
